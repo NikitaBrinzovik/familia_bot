@@ -5,7 +5,9 @@ const {gameOptions, againOptions} = require('./options')
 const sequelize = require('./db');
 const UserModel = require('./models');
 
-const bot = new TelegramApi(process.env.TOKEN, {polling: true})
+const bot = new TelegramApi('6441829539:AAGymdI87Ejrc5uj7KKx18vgPV9Iil9G1YU', {polling: {
+        interval: 1000
+    }})
 
 const chats = {}
 
