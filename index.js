@@ -40,7 +40,10 @@ const start = async () => {
 
         try {
             if (text === '/start') {
-                await UserModel.create({chatId})
+                if (!await UserModel.findOne({ where: { chatId } })) {
+                    await UserModel.create({ chatId });
+                }
+
                 await bot.sendSticker(chatId, 'https://tlgrm.eu/_/stickers/a12/164/a1216452-0494-353a-8b90-8d00340f7657/1.webp')
                 return bot.sendMessage(chatId, `Добро пожаловать в телеграм бот!`);
             }
